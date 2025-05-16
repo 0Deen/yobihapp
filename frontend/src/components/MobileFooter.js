@@ -26,7 +26,7 @@ const MobileFooter = () => {
 
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mb: 1 }}>
           <Link
-            href="https://github.com/0Deen/YobraApp-mental-recommendation-"
+            href="https://github.com/0Deen/yobihapp"
             target="_blank"
             rel="noopener noreferrer"
             sx={{
