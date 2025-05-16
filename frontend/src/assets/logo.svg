@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0a192f" />
+            <stop offset="100%" stop-color="#112240" />
+        </linearGradient>
+        <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#64ffda" />
+            <stop offset="100%" stop-color="#88a4ff" />
+        </linearGradient>
+        <linearGradient id="faceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#88a4ff" />
+            <stop offset="100%" stop-color="#a8b2d1" />
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle fill="url(#circleGradient)" cx="100" cy="100" r="90"></circle>
+        <path d="M100,30 C139.765,30 172,62.2355 172,102 C172,141.765 139.765,174 100,174 C60.2355,174 28,141.765 28,102 C28,62.2355 60.2355,30 100,30 Z M100,40 C65.7583,40 38,67.7583 38,102 C38,136.242 65.7583,164 100,164 C134.242,164 162,136.242 162,102 C162,67.7583 134.242,40 100,40 Z" fill="url(#ringGradient)" fill-rule="nonzero"></path>
+        <path d="M100,60 C117.673,60 132,74.3269 132,92 C132,109.673 117.673,124 100,124 C82.3269,124 68,109.673 68,92 C68,74.3269 82.3269,60 100,60 Z" fill="url(#faceGradient)"></path>
+        <path d="M70,130 L130,130 C130,152.091 116.569,170 100,170 C83.4315,170 70,152.091 70,130 Z" fill="url(#faceGradient)"></path>
+        <path d="M85,80 C88.3137,80 91,82.6863 91,86 C91,89.3137 88.3137,92 85,92 C81.6863,92 79,89.3137 79,86 C79,82.6863 81.6863,80 85,80 Z" fill="#0a192f"></path>
+        <path d="M115,80 C118.314,80 121,82.6863 121,86 C121,89.3137 118.314,92 115,92 C111.686,92 109,89.3137 109,86 C109,82.6863 111.686,80 115,80 Z" fill="#0a192f"></path>
+        <path d="M85,105 L115,105 C115,112.732 108.284,119 100,119 C91.7157,119 85,112.732 85,105 Z" fill="#0a192f"></path>
+    </g>
+</svg>

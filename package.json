@@ -1,0 +1,16 @@
+{
+  "name": "mind-recommend",
+  "version": "1.0.0",
+  "description": "Mental Health Assessment Application",
+  "main": "index.js",
+  "scripts": {
+    "start-frontend": "cd frontend && npm start",
+    "start-backend": "cd backend && python app.py",
+    "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: mind-recommend-1
+    env: python
+    region: singapore  # Choose a region close to your users
+    plan: free  # Use the free plan
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && gunicorn wsgi:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: FRONTEND_URL
+        value: https://mind-recommend.vercel.app
+      - key: PYTHON_VERSION
+        value: 3.8.17

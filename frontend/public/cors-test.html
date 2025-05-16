@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #357ab8;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>CORS Test for Mind Recommend API</h1>
+    
+    <div>
+        <h2>Test API Endpoints</h2>
+        <button id="testPrimary">Test Primary API</button>
+        <button id="testBackup">Test Backup API</button>
+        <button id="testLocal">Test Local API</button>
+    </div>
+    
+    <div>
+        <h2>Results</h2>
+        <pre id="results">Click a button to test API connections...</pre>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const resultsElement = document.getElementById('results');
+            
+            // API URLs
+            const primaryApiUrl = 'https://mind-recommend-1.onrender.com';
+            const backupApiUrl = 'https://mind-recommend-api.onrender.com';
+            const localApiUrl = 'http://localhost:5000';
+            
+            // Test data for predict endpoint
+            const testData = {
+                sleep_hours: 7,
+                academic_performance: 1,  // Average
+                bullied: 0,  // No
+                has_close_friends: 1,  // Yes
+                homesick_level: 2,
+                mess_food_rating: 3,
+                sports_participation: 1,  // Yes
+                social_activities: 5,
+                study_hours: 4,
+                screen_time: 3
+            };
+            
+            // Function to test API connection
+            async function testApi(apiUrl) {
+                resultsElement.innerHTML = `Testing ${apiUrl}...\n`;
+                
+                try {
+                    // Test root endpoint
+                    resultsElement.innerHTML += `\nTesting root endpoint (GET ${apiUrl})...\n`;
+                    const rootResponse = await fetch(apiUrl, {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    const rootData = await rootResponse.json();
+                    resultsElement.innerHTML += `<span class="success">✓ Root endpoint successful</span>\n`;
+                    resultsElement.innerHTML += `Status: ${rootResponse.status}\n`;
+                    resultsElement.innerHTML += `Response: ${JSON.stringify(rootData, null, 2)}\n`;
+                    
+                    // Test predict endpoint
+                    resultsElement.innerHTML += `\nTesting predict endpoint (POST ${apiUrl}/api/predict)...\n`;
+                    const predictResponse = await fetch(`${apiUrl}/api/predict`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(testData)
+                    });
+                    
+                    const predictData = await predictResponse.json();
+                    resultsElement.innerHTML += `<span class="success">✓ Predict endpoint successful</span>\n`;
+                    resultsElement.innerHTML += `Status: ${predictResponse.status}\n`;
+                    resultsElement.innerHTML += `Response: ${JSON.stringify(predictData, null, 2)}\n`;
+                    
+                } catch (error) {
+                    resultsElement.innerHTML += `<span class="error">✗ Error: ${error.message}</span>\n`;
+                    resultsElement.innerHTML += `This is likely a CORS error or the API is not responding.\n`;
+                    
+                    if (error.message.includes('Failed to fetch') || error.message.includes('Network Error')) {
+                        resultsElement.innerHTML += `\nPossible causes:\n`;
+                        resultsElement.innerHTML += `1. The API server is down or not responding\n`;
+                        resultsElement.innerHTML += `2. CORS is not properly configured on the server\n`;
+                        resultsElement.innerHTML += `3. There's a network connectivity issue\n`;
+                    }
+                }
+            }
+            
+            // Add event listeners to buttons
+            document.getElementById('testPrimary').addEventListener('click', () => testApi(primaryApiUrl));
+            document.getElementById('testBackup').addEventListener('click', () => testApi(backupApiUrl));
+            document.getElementById('testLocal').addEventListener('click', () => testApi(localApiUrl));
+        });
+    </script>
+</body>
+</html>

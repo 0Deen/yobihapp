@@ -1,0 +1,36 @@
+.app-footer {
+  padding: 24px 0;
+  margin-top: auto;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(18, 18, 18, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* For Safari/Chrome */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Chrome-specific fix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .app-footer {
+    position: relative !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: rgba(18, 18, 18, 0.5) !important;
+  }
+}
+
+/* Ensure footer is visible on all browsers */
+@supports (-webkit-appearance:none) {
+  .app-footer {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
