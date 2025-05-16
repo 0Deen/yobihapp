@@ -492,7 +492,7 @@ const WelcomePage = ({ onGetStarted }) => {
           }}
         >
           <Link
-            href="https://github.com/0Deen/YobraApp-mental-recommendation-"
+            href="https://github.com/0Deen/yobihapp"
             target="_blank"
             rel="noopener noreferrer"
             className="welcome-footer-link"
