@@ -1,4 +1,4 @@
-# Mental Health Assessment Application
+# (YobraApp) is a Mental Health Assessment Application
 
 This is a mental health assessment application that uses a machine learning model to predict mental health conditions based on various factors.
 
