@@ -59,8 +59,3 @@ if __name__ == "__main__":
             print("✅ API connection successful")
             print("\nTesting predict endpoint")
             if test_predict_endpoint(url):
-                print("✅ Predict endpoint working correctly")
-            else:
-                print("❌ Predict endpoint test failed")
-        else:
-            print("❌ API connection failed")
